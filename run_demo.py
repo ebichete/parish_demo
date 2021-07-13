@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.graph_objs as go
 
 import dhis2
-import dhis_mets_or_ug
+#import dhis_mets_or_ug
 
 UG_OU_UID = 'akV6429SUqu'
 
@@ -85,7 +85,8 @@ if 'u_passcode' not in st.session_state:
 
 st.sidebar.image('Coat_of_arms_of_Uganda.png', caption='Government of Uganda', width=240)
 
-mets_inst, dataelements, orgunits = load_dhis2_data(dhis_mets_or_ug.DHIS2_SERVER_URL, dhis_mets_or_ug.credentials)
+#mets_inst, dataelements, orgunits = load_dhis2_data(dhis_mets_or_ug.DHIS2_SERVER_URL, dhis_mets_or_ug.credentials)
+mets_inst, dataelements, orgunits = load_dhis2_data(st.secrets['DHIS2_SERVER_URL'], tuple(st.secrets['credentials']))
 #st.write([(de['id'], de['name']) for de in (dataelements[de_id] for de_id in PCR_DE_UIDS)])
 
 
