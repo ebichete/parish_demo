@@ -155,7 +155,9 @@ MISMATCH_DISTRICTS = [(x_name, x_uid) for x_name, x_uid in district_tuples if x_
 #         x_ou = orgunits.lookup_name(x_name)
 #         st.write((x_name, x_uid, x_ou['id']))
 
-district_selected = st.selectbox('Select a district:', options=[('<No District>', UG_OU_UID),*district_tuples], format_func=lambda x: x[0])
+left_col, center_col, right_col = st.beta_columns([1, 1, 1])
+with left_col:
+    district_selected = st.selectbox('Select a district:', options=[('<No District>', UG_OU_UID),*district_tuples], format_func=lambda x: x[0])
 
 district_name, district_uid = district_selected
 if district_uid != UG_OU_UID:
@@ -228,6 +230,28 @@ df_parish = pd.read_csv(parish_path)
 if district_name != 'Uganda':
     df_district_parishes = df_parish[df_parish['District'] == district_name.replace(' District', '')]
     # st.write(df_district_parishes)
+    
+    with center_col:
+        subcounty_arr = df_district_parishes['Subcounty'].unique()
+        # st.write(subcounty_arr)
+        subcounty_tuples = [(x,x) for x in subcounty_arr]
+        subcounty_selected = st.selectbox('Select subcounty:', options=['<No Subcounty>', *subcounty_arr])
+        if subcounty_selected != '<No Subcounty>':
+            subcounty_name = str(subcounty_selected)
+        else:
+            subcounty_name = None
+
+    if subcounty_name:
+        with right_col:
+            parish_arr = df_district_parishes[df_district_parishes['Subcounty'] == subcounty_name]['Parish'].unique()
+            # st.write(parish_arr)
+            parish_tuples = [(x,x) for x in parish_arr]
+            parish_selected = st.selectbox('Select parish:', options=['<No parish>', *parish_arr])
+            if parish_selected != '<No parish>':
+                parish_name = str(parish_selected)
+            else:
+                parish_name = None
+    
     df_subcounty_pop = df_district_parishes[['District', 'County', 'Subcounty', 'Parish', 'Pop_Total']].groupby(['District', 'County', 'Subcounty']).sum()
     # st.write(df_subcounty_pop)
 
@@ -239,6 +263,9 @@ if district_name != 'Uganda':
     # st.write(tt)
     # st.write({ row[0]: [row[2], row[1]] for row in tt.itertuples() })
     # render_card_row(f'Population Statistics [{len(df_subcounty_pop)} subcounties, {len(df_district_parishes)} parishes]', { row[0]: [row[2], row[1]] for row in tt.itertuples() })
+else:
+    subcounty_name = None
+    parish_name = None
 
 # df_optionb_all = pd.read_csv('optionb_plus.csv')
 df_optionb_all = pd.read_csv('optionb_plus2.csv')
