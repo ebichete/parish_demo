@@ -310,3 +310,260 @@ else:
 
 
 # render_card_row(pmtct_title, pmtct)
+
+if district_name and subcounty_name and parish_name:
+    # st.write(df_subcounty_pop)
+    tt = df_district_parishes[(df_district_parishes['District'] == district_name.replace(' District', '')) & (df_district_parishes['Subcounty'] == subcounty_name) & (df_district_parishes['Parish'] == parish_name)]
+    parish_pop = tt['Pop_Total'].values[0]
+    # st.write(tt)
+    st.header(f"{parish_name} Parish [Population: {parish_pop}] - {subcounty_name}, {district_name}")
+    # st.header("Katooma Parish [Population: 5589] - Rwahi Town Council, Ntungamo District")
+
+    st.subheader("Production, Processing, Value Addition and Marketing")
+    st.write("""
+<ol>
+    <li><h3>Production</h3>
+        <ul>
+        <li>Crops Grown for Commercial purposes
+            <ul>
+                <li>
+                <div>Onions</div>
+                <p>
+                Number of registered growers: 411<br/>
+                Number of registered grower associations: 17<br/>
+                Number of approved storage facilities: 2<br/>
+                Quantity (tonnes) sold: 1754.5<br/>
+                Farm gate price (UGX/tonnes): 70000<br/>
+                </p>
+                </li>
+                <li>Sweet Potatoes</li>
+                <li>Cabbages</li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+    <li><h3>Processing</h3>
+        <ul>
+        <li>Processed Agricultural Produce
+            <ul>
+                <li>
+                <div>Onions (Sun-dried)</div>
+                Quantity (tonnes): 600</br>
+                </li>
+                <li>
+                <div>Onion slices (package)</div>
+                Quantity (tonnes): 97</br>
+                </li>
+            </ul>
+        <li>
+        </ul>
+    </li>
+    <li><h3>Value Addition</h3>
+        <ul>
+        <li>Value Added Agricultural Produce
+            <ul>
+                <li>
+                <div>Onion Powder</div>
+                Quantity (tonnes): 230</br>
+                Value-adding groups/entities: Rwahi Spice Cooperative</br>
+                </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+    <li><h3>Marketing</h3>
+        <ul>
+        <li>Marketing Association
+            <ul>
+                <li>
+                <div>Onions</div>
+                Farmers Cooperative: Banyankole Kweterana</br>
+                </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+</ol>
+"""
+        , unsafe_allow_html=True)
+    st.subheader("Infrastructure and Economic Services")
+    st.write("""
+<ol>
+    <li><h3>Electricity</h3>
+        <ul>
+        <li>Electricity Coverage
+            <ul>
+                <li>
+                <p>
+                Number of households connected to grid power: 411<br/>
+                Number of households using solar: 17<br/>
+                Number of using traditional lighting (tadooba etc): 2<br/>
+                </p>
+                </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+    <li><h3>Roads</h3>
+        <ul>
+        <li>Road Coverage
+            <ul>
+                <li>
+                Tarmac Road (kms): 12</br>
+                Murram Road (kms): 10</br>
+                Impassable Road (kms): 8</br>
+                </li>
+            </ul>
+        </li>
+        <li>Bridges
+            <ul>
+                <li>
+                Existing: 1</br>
+                Needed: 1</br>
+                </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+    <li><h3>Markets</h3>
+        <ul>
+        <li>Electricity Coverage
+            <ul>
+                <li>
+                <p>
+                Weekly Markets: 2<br/>
+                Permanent Markets: 1<br/>
+                </p>
+                </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+</ol>
+"""
+        , unsafe_allow_html=True)
+    st.subheader("Financial Inclusion")
+    st.write("""
+<ol>
+    <li><h3>Banks and Savings Societies</h3>
+        <ul>
+        <li>Electricity Coverage
+            <ul>
+                <li>
+                <p>
+                Number of households connected to grid power: 411<br/>
+                Number of households using solar: 17<br/>
+                Number of using traditional lighting (tadooba etc): 2<br/>
+                </p>
+                </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+    <li><h3>Access to Credit</h3>
+        <ul>
+        <li>SACCOs and Cooperatives
+            <ul>
+                <li>
+                <p>
+                Number of savings organisations: 411<br/>
+                Number of savers/participants: 411<br/>
+                </p>
+                </li>
+            </ul>
+        </li>
+        <li>Grants, Youth Development funds
+            <ul>
+                <li><div>Youth Development Loans/Grants</div>
+                <p>
+                Number of youth associations that have received loans: 17<br/>
+                Number of youth associations that have received loans: 17<br/>
+                </p>
+                </li>
+                <li><div>Emyooga<div>
+                <p>
+                Number of beneficiary associations: 411<br/>
+                Number of members of beneficiary associations: 17<br/>
+                </p>
+                </li>
+                <li><div>Byona Bagagawale<div>
+                <p>
+                Number of beneficiary associations: 411<br/>
+                Number of members of beneficiary associations: 17<br/>
+                </p>
+                </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+</ol>
+"""
+        , unsafe_allow_html=True)
+    st.subheader("Health")
+    st.subheader("Education")
+    st.subheader("Social Service Delivery")
+    st.write("""
+<ol>
+    <li><h3>Water and Sanitation</h3>
+        <ul>
+        <li>Water Sources
+            <ul>
+                <li>
+                <p>
+                Piped and Tap: 411<br/>
+                Boreholes: 411<br/>
+                Wells: 411<br/>
+                Open Waterbodies (lakes, rivers, streams): <br/>
+                </p>
+                </li>
+            </ul>
+        </li>
+        <li>Hygiene
+            <ul>
+                <li><div>Access to Toilet facilities</div>
+                <p>
+                Modern Latrine: 17<br/>
+                Other toilet facility: 17<br/>
+                </p>
+                </li>
+                <li><div>Manner of Waste Disposal<div>
+                <p>
+                Percentage of households that properly dispose of solid waste: 17<br/>
+                </p>
+                </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+    <li><h3>Social Development Services</h3>
+    </li>
+</ol>
+"""
+        , unsafe_allow_html=True)
+    st.subheader("Community Information")
+    st.subheader("Governance and Administration")
+    st.write("""
+<ol>
+    <li><h3>Local Government</h3>
+        <ul>
+        <li>Local Leadership
+            <ul>
+                <li>
+                <p>
+                Number of local council officials: 6<br/>
+                &lt;Name&gt; &lt;Designation&gt;<br/>
+                &lt;Name&gt; &lt;Designation&gt;<br/>
+                &lt;Name&gt; &lt;Designation&gt;<br/>
+                &lt;Name&gt; &lt;Designation&gt;<br/>
+                &lt;Name&gt; &lt;Designation&gt;<br/>
+                &lt;Name&gt; &lt;Designation&gt;<br/>
+                </p>
+                </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+</ol>
+"""
+        , unsafe_allow_html=True)
+    st.subheader("Mindset Change")
