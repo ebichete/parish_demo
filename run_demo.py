@@ -67,7 +67,7 @@ st.set_page_config(page_title='Shema-Rwahi Demo')
 st.title('MIS dashboard demo')
 
 query_params = st.experimental_get_query_params()
-st.write(query_params)
+# st.write(query_params)
 
 if 'u_passcode' not in st.session_state:
     st.session_state['u_passcode'] = ''
@@ -215,7 +215,7 @@ df_parish = pd.read_csv(parish_path)
 
 if district_name != 'Uganda':
     df_district_parishes = df_parish[df_parish['District'] == district_name.replace(' District', '')]
-    st.write(df_district_parishes)
+    # st.write(df_district_parishes)
     df_subcounty_pop = df_district_parishes[['District', 'County', 'Subcounty', 'Parish', 'Pop_Total']].groupby(['District', 'County', 'Subcounty']).sum()
     # st.write(df_subcounty_pop)
 
@@ -232,7 +232,7 @@ if district_name != 'Uganda':
 df_optionb_all = pd.read_csv('optionb_plus2.csv')
 df_optionb = df_optionb_all[df_optionb_all['Organisation unit'] == district_uid]
 df_optionb['shortName'] = df_optionb['Data'].map(lambda x: dataelements[x]['name'][6:].replace('Tested ', '', 1).replace('Total Number ', '', 1))
-st.write(df_optionb) # DEBUG: OptionB+ cascade for selected district
+# st.write(df_optionb) # DEBUG: OptionB+ cascade for selected district
 
 xx = { a: (d, c) for _, a, b, c, d in df_optionb.itertuples() }
 
