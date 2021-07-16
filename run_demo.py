@@ -238,7 +238,7 @@ if district_name != 'Uganda':
     tt = df_district_parishes[['Subcounty', 'Parish', 'Pop_Total']].groupby(['Subcounty',]).agg(parish_list=('Parish', lambda x: ', '.join(x)), subcounty_pop=('Pop_Total', sum))
     # st.write(tt)
     # st.write({ row[0]: [row[2], row[1]] for row in tt.itertuples() })
-    render_card_row(f'Population Statistics [{len(df_subcounty_pop)} subcounties, {len(df_district_parishes)} parishes]', { row[0]: [row[2], row[1]] for row in tt.itertuples() })
+    # render_card_row(f'Population Statistics [{len(df_subcounty_pop)} subcounties, {len(df_district_parishes)} parishes]', { row[0]: [row[2], row[1]] for row in tt.itertuples() })
 
 # df_optionb_all = pd.read_csv('optionb_plus.csv')
 df_optionb_all = pd.read_csv('optionb_plus2.csv')
@@ -282,4 +282,4 @@ else:
     }
 
 
-render_card_row(pmtct_title, pmtct)
+# render_card_row(pmtct_title, pmtct)
