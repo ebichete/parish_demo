@@ -62,7 +62,7 @@ def load_dhis2_data(server_url, credentials):
 
     return (instance, dataelements, orgunits)
 
-st.set_page_config(page_title='Shema-Rwahi Demo')
+st.set_page_config(layout='wide', page_title='Shema-Rwahi Demo')
 
 st.title('MIS dashboard demo')
 
@@ -126,10 +126,22 @@ for row in df_districts.itertuples():
 
 #st.write(district_geojson['features'][:2])
 
+left_col, right_col = st.beta_columns([1, 1])
+with right_col:
+    st.subheader("1 - Production, Processing, Value Addition and Marketing")
+    st.subheader("2 - Infrastructure and Economic Services")
+    st.subheader("3 - Financial Inclusion")
+    st.subheader("4 - Health")
+    st.subheader("5 - Education")
+    st.subheader("6 - Social Services Delivery")
+    st.subheader("7 - Community Information")
+    st.subheader("8 - Governance and Administration")
+    st.subheader("9 - Mindset Change")
+
 fig = go.Figure(go.Choroplethmapbox(geojson=district_geojson, locations=df_districts_mappable.UID, z=df_districts_mappable.region_index, colorscale='Cividis',zmin=0,zmax=17, marker_opacity=0.5, marker_line_width=0))
 fig.update_layout(mapbox_style="carto-positron", mapbox_zoom=5.5, mapbox_center = {"lat": 0.6226, "lon": 32.3271})
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-st.write(fig)
+left_col.write(fig)
 
 
 
