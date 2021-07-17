@@ -104,13 +104,13 @@ REGIONS = [
 df_districts['region_index'] = df_districts['REGION'].map(lambda x: REGIONS.index(x) * 4)
 #st.write(df_districts)
 
-st.write(f'Number of districts: {len(df_districts)}')
+# st.write(f'Number of districts: {len(df_districts)}')
 
 df_districts_unmappable = df_districts[df_districts['COORDINATES'] == '""']
 df_districts_mappable = df_districts[df_districts['COORDINATES'] != '""']
 
-st.write('Unmappable districts:')
-st.write(df_districts_unmappable[['REGION', 'SUB_REGION', 'DISTRICT', 'COORDINATES']])
+# st.write('Unmappable districts:')
+# st.write(df_districts_unmappable[['REGION', 'SUB_REGION', 'DISTRICT', 'COORDINATES']])
 
 district_geojson = { 'type': 'FeatureCollection', 'features': list() }
 mappable_district_uids = list()
