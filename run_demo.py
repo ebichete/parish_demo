@@ -64,8 +64,6 @@ def load_dhis2_data(server_url, credentials):
 
 st.set_page_config(layout='wide', page_title='Shema-Rwahi Demo')
 
-st.title('MIS dashboard demo')
-
 query_params = st.experimental_get_query_params()
 # st.write(query_params)
 
@@ -82,8 +80,12 @@ if 'u_passcode' not in st.session_state:
 
 #with open('Coat_of_arms_of_Uganda.svg', 'r') as uganda_arms_file:
 #    st.sidebar.image((''.join(l for l in uganda_arms_file))[113:], caption='Government of Uganda', width=48)
+left_col, centre_col, right_col = st.beta_columns([1, 1, 1])
 
-st.sidebar.image('Coat_of_arms_of_Uganda.png', caption='Government of Uganda', width=240)
+with left_col:
+    st.image('Coat_of_arms_of_Uganda.png', caption='Government of Uganda', width=120)
+with centre_col:
+    st.title('MIS dashboard demo')
 
 #mets_inst, dataelements, orgunits = load_dhis2_data(dhis_mets_or_ug.DHIS2_SERVER_URL, dhis_mets_or_ug.credentials)
 mets_inst, dataelements, orgunits = load_dhis2_data(st.secrets['DHIS2_SERVER_URL'], tuple(st.secrets['credentials']))
