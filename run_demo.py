@@ -321,8 +321,8 @@ if district_name and subcounty_name and parish_name:
     st.header(f"{parish_name} Parish [Population: {parish_pop}] - {subcounty_name}, {district_name}")
     # st.header("Katooma Parish [Population: 5589] - Rwahi Town Council, Ntungamo District")
 
-    st.subheader("Production, Processing, Value Addition and Marketing")
-    st.write("""
+    with st.beta_expander("Production, Processing, Value Addition and Marketing"):
+        st.write("""
 <ol>
     <li><h3>Production</h3>
         <ul>
@@ -388,8 +388,8 @@ if district_name and subcounty_name and parish_name:
 </ol>
 """
         , unsafe_allow_html=True)
-    st.subheader("Infrastructure and Economic Services")
-    st.write("""
+    with st.beta_expander("Infrastructure and Economic Services"):
+        st.write("""
 <ol>
     <li><h3>Electricity</h3>
         <ul>
@@ -444,8 +444,8 @@ if district_name and subcounty_name and parish_name:
 </ol>
 """
         , unsafe_allow_html=True)
-    st.subheader("Financial Inclusion")
-    st.write("""
+    with st.beta_expander("Financial Inclusion"):
+        st.write("""
 <ol>
     <li><h3>Banks and Savings Societies</h3>
         <ul>
@@ -501,10 +501,12 @@ if district_name and subcounty_name and parish_name:
 </ol>
 """
         , unsafe_allow_html=True)
-    st.subheader("Health")
-    st.subheader("Education")
-    st.subheader("Social Service Delivery")
-    st.write("""
+    with st.beta_expander("Health"):
+        pass
+    with st.beta_expander("Education"):
+        pass
+    with st.beta_expander("Social Service Delivery"):
+        st.write("""
 <ol>
     <li><h3>Water and Sanitation</h3>
         <ul>
@@ -542,9 +544,10 @@ if district_name and subcounty_name and parish_name:
 </ol>
 """
         , unsafe_allow_html=True)
-    st.subheader("Community Information")
-    st.subheader("Governance and Administration")
-    st.write("""
+    with st.beta_expander("Community Information"):
+        pass
+    with st.beta_expander("Governance and Administration"):
+        st.write("""
 <ol>
     <li><h3>Local Government</h3>
         <ul>
@@ -568,4 +571,5 @@ if district_name and subcounty_name and parish_name:
 </ol>
 """
         , unsafe_allow_html=True)
-    st.subheader("Mindset Change")
+    with st.beta_expander("Mindset Change"):
+        pass
