@@ -120,13 +120,13 @@ for row in df_districts.itertuples():
     'type': 'Feature',
     'geometry': json.loads(row.COORDINATES),
     'properties': { 'name': row.DISTRICT, 'region': row.REGION, 'subregion': row.SUB_REGION, 'uid': row.UID },
-    'id': row.UID,
+    'id': row.DISTRICT,
     }
     district_geojson['features'].append(d)
     if row.UID not in ['bJgx6UjvyoP']:
         mappable_district_uids.append(row.UID)
 
-#st.write(district_geojson['features'][:2])
+# st.write(district_geojson['features'][:2])
 
 left_col, right_col = st.beta_columns([1, 1])
 with right_col:
@@ -140,7 +140,7 @@ with right_col:
     st.write("<b>8 - Governance and Administration</b>", unsafe_allow_html=True)
     st.write("<b>9 - Mindset Change</b>", unsafe_allow_html=True)
 
-fig = go.Figure(go.Choroplethmapbox(geojson=district_geojson, locations=df_districts_mappable.UID, z=df_districts_mappable.region_index, colorscale='Cividis',zmin=0,zmax=17, marker_opacity=0.5, marker_line_width=0))
+fig = go.Figure(go.Choroplethmapbox(geojson=district_geojson, locations=df_districts_mappable.DISTRICT, z=df_districts_mappable.region_index, colorscale='Cividis',zmin=0,zmax=17, marker_opacity=0.5, marker_line_width=0))
 fig.update_layout(mapbox_style="carto-positron", mapbox_zoom=5.5, mapbox_center = {"lat": 0.6226, "lon": 32.3271})
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 left_col.write(fig)
