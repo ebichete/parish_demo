@@ -128,7 +128,7 @@ for row in df_districts.itertuples():
 
 # st.write(district_geojson['features'][:2])
 
-left_col, right_col = st.beta_columns([1, 1])
+left_col, center_col, right_col = st.beta_columns([4, 1, 4])
 with right_col:
     st.write("<b>1 - Production, Processing, Value Addition and Marketing</b>", unsafe_allow_html=True)
     st.write("<b>2 - Infrastructure and Economic Services</b>", unsafe_allow_html=True)
@@ -357,7 +357,7 @@ if district_name and subcounty_name and parish_name:
                 Quantity (tonnes): 97</br>
                 </li>
             </ul>
-        <li>
+        </li>
         </ul>
     </li>
     <li><h3>Value Addition</h3>
