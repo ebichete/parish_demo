@@ -106,6 +106,17 @@ df_districts['region_index'] = df_districts['REGION'].map(lambda x: REGIONS.inde
 
 # st.write(f'Number of districts: {len(df_districts)}')
 
+UBOS_PARISH_PATH = 'ubos_parish'
+parish_path = 'ubos_parish/ALL_POP.csv'
+
+df_parish = pd.read_csv(parish_path)
+#st.write(df_parish)
+df_district_pop = df_parish[['District','Pop_Total']].groupby(['District',], as_index=False).sum()
+df_district_pop['DISTRICT'] = df_district_pop['District'].apply(lambda x: x + ' District')
+# st.write(df_district_pop)
+df_districts = pd.merge(df_districts, df_district_pop, on=['DISTRICT',])
+# st.write(df_districts)
+
 df_districts_unmappable = df_districts[df_districts['COORDINATES'] == '""']
 df_districts_mappable = df_districts[df_districts['COORDINATES'] != '""']
 
@@ -140,7 +151,7 @@ with right_col:
     st.write("<b>8 - Governance and Administration</b>", unsafe_allow_html=True)
     st.write("<b>9 - Mindset Change</b>", unsafe_allow_html=True)
 
-fig = go.Figure(go.Choroplethmapbox(geojson=district_geojson, locations=df_districts_mappable.DISTRICT, z=df_districts_mappable.region_index, colorscale='Cividis',zmin=0,zmax=17, marker_opacity=0.5, marker_line_width=0))
+fig = go.Figure(go.Choroplethmapbox(geojson=district_geojson, locations=df_districts_mappable.DISTRICT, z=df_districts.Pop_Total, colorscale='temps', marker_opacity=0.5, marker_line_width=0))
 fig.update_layout(mapbox_style="carto-positron", mapbox_zoom=5.5, mapbox_center = {"lat": 0.6226, "lon": 32.3271})
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 left_col.write(fig)
@@ -222,12 +233,6 @@ if district_uid in EHMIS_OPTIONB_MAP:
 #    district_uid = 'rzsbhKKYISq'
 #if district_uid == 'Gwk4wkLz7EW': # Gulu
 #    district_uid = 'tEYLrsgH6aO'
-
-UBOS_PARISH_PATH = 'ubos_parish'
-parish_path = 'ubos_parish/ALL_POP.csv'
-
-df_parish = pd.read_csv(parish_path)
-#st.write(df_parish)
 
 if district_name != 'Uganda':
     df_district_parishes = df_parish[df_parish['District'] == district_name.replace(' District', '')]
