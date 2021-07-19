@@ -434,7 +434,7 @@ if district_name and subcounty_name and parish_name:
     </li>
     <li><h3>Markets</h3>
         <ul>
-        <li>Electricity Coverage
+        <li>Regular Goods Markets
             <ul>
                 <li>
                 <p>
@@ -453,19 +453,6 @@ if district_name and subcounty_name and parish_name:
         st.write("""
 <ol>
     <li><h3>Banks and Savings Societies</h3>
-        <ul>
-        <li>Electricity Coverage
-            <ul>
-                <li>
-                <p>
-                Number of households connected to grid power: 411<br/>
-                Number of households using solar: 17<br/>
-                Number of using traditional lighting (tadooba etc): 2<br/>
-                </p>
-                </li>
-            </ul>
-        </li>
-        </ul>
     </li>
     <li><h3>Access to Credit</h3>
         <ul>
